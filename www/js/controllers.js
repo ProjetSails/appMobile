@@ -1,7 +1,24 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
+.controller('LoginCtrl', function($scope, LoginService, SignupService, $ionicPopup, $state) {
   $scope.data = {};
+
+
+    $scope.signup = function() {
+        SignupService.signupUser($scope.data.username, $scope.data.email, $scope.data.password ,$scope.data.confpassword).success(function(data) {
+
+            var alertPopup = $ionicPopup.alert({
+                title: 'Sign in succeeded!',
+                template: 'You have been register! please now, loggin yourself because the api\'s creator is lazy! :D ' + data.token
+            });
+        }).error(function(data) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Sign in failed..',
+                template: data
+            });
+        });
+    }
+
 
   $scope.login = function() {
         LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
@@ -20,6 +37,8 @@ angular.module('starter.controllers', [])
             });
         });
     }
+
+
 
     if(window.localStorage.getItem('authToken') != null) {
       LoginService.loginToken(window.localStorage.getItem('authToken')).success(function(data) {
