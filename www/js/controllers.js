@@ -4,7 +4,11 @@ angular.module('starter.controllers', [])
   $scope.data = {};
 
 
+
     $scope.signup = function() {
+
+
+
         SignupService.signupUser($scope.data.username, $scope.data.email, $scope.data.password ,$scope.data.confpassword).success(function(data) {
 
             var alertPopup = $ionicPopup.alert({
@@ -53,4 +57,30 @@ angular.module('starter.controllers', [])
         });
       })
     }
-});
+})
+
+    .controller('ListCamsCtrl', function($scope, $ionicPopover ) {
+        $scope.data = {};
+
+        $scope.cams = [
+            { title: 'Camera 1' },
+            { title: 'Camera 2' },
+            { title: 'Camera 3' },
+            { title: 'Camera 4' },
+            { title: 'Camera 5' },
+            { title: 'Camera 6' },
+            { title: 'Camera 7' },
+            { title: 'Camera 8' },
+            { title: 'Camera 9' },
+            { title: 'Camera 10' }
+        ];
+
+
+    })
+    .controller('ProfilCtrl', function($scope, $ionicPopover ) {
+        $scope.data = {};
+
+
+    });
+
+

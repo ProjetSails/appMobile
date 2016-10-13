@@ -40,6 +40,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
           url: '/signup',
           templateUrl: 'templates/signup.html',
           controller: 'LoginCtrl'
+      })
+      .state('listcams', {
+          url: '/listcams',
+          templateUrl: 'templates/listcams.html',
+          controller: 'ListCamsCtrl'
+      })    
+      .state('profil', {
+          url: '/listcams',
+          templateUrl: 'templates/profil.html',
+          controller: 'ProfilCtrl'
       });
 
 

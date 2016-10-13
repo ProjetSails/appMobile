@@ -1,0 +1,35 @@
+<ion-view view-title="ListCams" name="listcams-view">
+    <ion-content class="padding">
+
+        <div class="page-title text-center">
+            <h1>Cameras</h1>
+        </div>
+
+        <div class="section-title">
+            <h2>Settings</h2>
+        </div>
+        <div class="container-fluid no-padding">
+            <div class="clearfix">
+                <div class="col-centered col-xs-4">
+                    <button class="button button-block button-calm add-camera" ng-click="addCamera()">Add camera</button>
+                </div>
+                <div class="col-centered col-xs-4">
+                    <button class="button button-block button-calm link-profil" ng-click="goProfil()">Profil</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title ">
+            <h2>Cameras</h2>
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="cam in cams">
+
+                <button class="button button-block button-calm select-camera" ng-click="selectCamera(cam.id)">{{cam.title}}</button>
+
+            </ion-item>
+        </ion-list>
+
+
+    </ion-content>
+</ion-view>

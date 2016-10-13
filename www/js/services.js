@@ -53,7 +53,6 @@ angular.module('starter.services', [])
     }
 })
 
-
 .service('SignupService', function($q, $http) {
     return {
         signupUser: function(name, email, pw, confpw) {
@@ -89,6 +88,17 @@ angular.module('starter.services', [])
                     return promise;
                 }
             }
+
+            return promise;
+        }
+    }
+})
+
+.service('ListCamsService', function($q, $http) {
+    return {
+        getListCams: function() {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
 
             return promise;
         }
