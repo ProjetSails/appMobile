@@ -8,7 +8,7 @@ angular.module('starter.services', [])
 
             $http.post(urlBaseApi + '/auth/signin',
               {
-                email: name,
+                login: name,
                 password: pw
               }).success(function(response) {
                 deferred.resolve(response);
@@ -94,4 +94,3 @@ angular.module('starter.services', [])
         }
     }
 });
-
