@@ -59,28 +59,42 @@ angular.module('starter.controllers', [])
     }
 })
 
-    .controller('ListCamsCtrl', function($scope, $ionicPopover ) {
-        $scope.data = {};
+.controller('ListCamsCtrl', function($scope, ListCamsService, $ionicPopup ) {
+    $scope.data = {};
 
-        $scope.cams = [
-            { title: 'Camera 1' },
-            { title: 'Camera 2' },
-            { title: 'Camera 3' },
-            { title: 'Camera 4' },
-            { title: 'Camera 5' },
-            { title: 'Camera 6' },
-            { title: 'Camera 7' },
-            { title: 'Camera 8' },
-            { title: 'Camera 9' },
-            { title: 'Camera 10' }
-        ];
+    $scope.cams = [
+        { title: 'Camera 1' },
+        { title: 'Camera 2' },
+        { title: 'Camera 3' },
+        { title: 'Camera 4' },
+        { title: 'Camera 5' },
+        { title: 'Camera 6' },
+        { title: 'Camera 7' },
+        { title: 'Camera 8' },
+        { title: 'Camera 9' },
+        { title: 'Camera 10' }
+    ];
+
+    $scope.addCamera = function() {
+        ListCamsService.addCamera().success(function(data) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Error!',
+                template: 'No camera to add'
+            });
+        }).error(function() {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Token failed!',
+                template: data
+            });
+        })
+    }
 
 
-    })
-    .controller('ProfilCtrl', function($scope, $ionicPopover ) {
-        $scope.data = {};
+})
+.controller('ProfilCtrl', function($scope, $ionicPopover ) {
+    $scope.data = {};
 
 
-    });
+});
 
 
