@@ -6,7 +6,7 @@ angular.module('starter.services', [])
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            $http.post('http://10.33.0.136:1337/auth/signin',
+            $http.post(urlBaseApi + '/auth/signin',
               {
                 email: name,
                 password: pw
@@ -30,7 +30,7 @@ angular.module('starter.services', [])
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            $http.get('http://10.33.0.136:1337/user/me', {
+            $http.get(urlBaseApi + '/user/me', {
               headers: {
                 'Authorization': 'JWT ' + token
               }

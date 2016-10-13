@@ -6,7 +6,7 @@ angular.module('starter.services', [])
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            $http.post('http://localhost:1337/auth/signin',
+            $http.post(urlBaseApi + '/auth/signin',
               {
                 email: name,
                 password: pw
@@ -25,6 +25,30 @@ angular.module('starter.services', [])
                 return promise;
             }
             return promise;
+        },
+        loginToken: function(token) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+
+            $http.get(urlBaseApi + '/user/me', {
+              headers: {
+                'Authorization': 'JWT ' + token
+              }
+            }).success(function(response) {
+              deferred.resolve(response);
+            }).error(function(data, status, headers, config) {
+              deferred.reject('Wrong credentials.');
+            })
+
+          promise.success = function(fn) {
+              promise.then(fn);
+              return promise;
+          }
+          promise.error = function(fn) {
+              promise.then(null, fn);
+              return promise;
+          }
+          return promise;
         }
     }
 })
