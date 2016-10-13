@@ -6,9 +6,9 @@ angular.module('starter.services', [])
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            $http.post('http://10.33.0.136:1337/auth/signin',
+            $http.post(urlBaseApi + '/auth/signin',
               {
-                email: name,
+                login: name,
                 password: pw
               }).success(function(response) {
                 deferred.resolve(response);
@@ -30,7 +30,7 @@ angular.module('starter.services', [])
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            $http.get('http://10.33.0.136:1337/user/me', {
+            $http.get(urlBaseApi + '/user/me', {
               headers: {
                 'Authorization': 'JWT ' + token
               }
@@ -52,3 +52,45 @@ angular.module('starter.services', [])
         }
     }
 })
+
+
+.service('SignupService', function($q, $http) {
+    return {
+        signupUser: function(name, email, pw, confpw) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+
+            if(pw == confpw){
+                $http.post(urlBaseApi + '/auth/signup',
+                    {
+                        username: name,
+                        email: email,
+                        password: pw
+
+
+                    }).success(function(response) {
+                        deferred.resolve(response);
+                    }).error(function(data, status, headers, config) {
+                        deferred.reject('The api\'s builder suck!!');
+                    })
+
+                promise.success = function(fn) {
+                    promise.then(fn);
+                    return promise;
+                }
+                promise.error = function(fn) {
+                    promise.then(null, fn);
+                    return promise;
+                }
+            }else{
+                deferred.reject('the passwords don\'t match.');
+                promise.error = function(fn) {
+                    promise.then(null, fn);
+                    return promise;
+                }
+            }
+
+            return promise;
+        }
+    }
+});

@@ -71,7 +71,7 @@ angular.module('starter.services', [])
                     }).success(function(response) {
                         deferred.resolve(response);
                     }).error(function(data, status, headers, config) {
-                        deferred.reject('The api\'s builder suck!!');
+                        deferred.reject(data);
                     })
 
                 promise.success = function(fn) {
