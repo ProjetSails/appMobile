@@ -45,9 +45,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
           url: '/listcams',
           templateUrl: 'templates/listcams.html',
           controller: 'ListCamsCtrl'
-      })    
+      })
       .state('profil', {
-          url: '/listcams',
+          url: '/profil',
           templateUrl: 'templates/profil.html',
           controller: 'ProfilCtrl'
       });
