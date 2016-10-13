@@ -52,7 +52,7 @@ module.controller('SignupCtrl', function($scope, SignupService, $ionicPopup, $st
     };
 });
 
-module.controller('ListCamsCtrl', function($scope, $ionicPopover, $window) {
+module.controller('ListCamsCtrl', function($scope, ListCamsService, $ionicPopup, $window ) {
     $scope.data = {};
 
     $scope.cams = [
@@ -68,6 +68,20 @@ module.controller('ListCamsCtrl', function($scope, $ionicPopover, $window) {
         { title: 'Camera 10' }
     ];
 
+    $scope.addCamera = function() {
+        ListCamsService.addCamera().success(function(data) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Error!',
+                template: 'No camera to add'
+            });
+        }).error(function() {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Token failed!',
+                template: data
+            });
+        })
+    }
+
     $scope.logOut = function() {
       window.localStorage.setItem('authToken', "");
     };
@@ -75,11 +89,8 @@ module.controller('ListCamsCtrl', function($scope, $ionicPopover, $window) {
     $scope.goProfile = function() {
       $window.location.href = '#/profil';
     };
-
 });
 
 module.controller('ProfilCtrl', function($scope, $ionicPopover ) {
     $scope.data = {};
-
-
 });
