@@ -1,6 +1,6 @@
 var module = angular.module('starter.controllers', []);
 
-module.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $location) {
+module.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $window) {
   $scope.data = {};
 
   $scope.login = function() {
@@ -9,7 +9,7 @@ module.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $stat
           //Log in success, write to file
           window.localStorage.setItem('authToken', data.token);
 
-          $location.path('#/listcams');
+          $window.location.href = '#/listcams';
         }).error(function(data) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Login failed!',
@@ -21,6 +21,7 @@ module.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $stat
     if(window.localStorage.getItem('authToken') != null && window.localStorage.getItem('authToken') != "") {
       LoginService.loginToken(window.localStorage.getItem('authToken')).success(function(data) {
         //Le token existe déjà et fonctionne
+        $window.location.href = "#/listcams"
       }).error(function(data) {
         //Le token n'est pas bon
         window.localStorage.setItem('authToken', "");
@@ -30,14 +31,14 @@ module.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $stat
     }
 });
 
-module.controller('SignupCtrl', function($scope, SignupService, $ionicPopup, $state, $location){
+module.controller('SignupCtrl', function($scope, SignupService, $ionicPopup, $state, $window){
   $scope.data = {};
 
     $scope.signup = function() {
         SignupService.signupUser($scope.data.username, $scope.data.email, $scope.data.password ,$scope.data.confpassword).success(function(data) {
           window.localStorage.setItem('authToken', data.data.token);
             //signup a fonctionné
-            $location.path('#/listcams');
+            $window.location.href = '#/listcams';
         }).error(function(data) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Sign up failed.',
@@ -51,7 +52,7 @@ module.controller('SignupCtrl', function($scope, SignupService, $ionicPopup, $st
     };
 });
 
-module.controller('ListCamsCtrl', function($scope, $ionicPopover ) {
+module.controller('ListCamsCtrl', function($scope, $ionicPopover, $window) {
     $scope.data = {};
 
     $scope.cams = [
@@ -67,6 +68,13 @@ module.controller('ListCamsCtrl', function($scope, $ionicPopover ) {
         { title: 'Camera 10' }
     ];
 
+    $scope.logOut = function() {
+      window.localStorage.setItem('authToken', "");
+    };
+
+    $scope.goProfile = function() {
+      $window.location.href = '#/profil';
+    };
 
 });
 

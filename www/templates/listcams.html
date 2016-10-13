@@ -5,16 +5,22 @@
             <h1>Cameras</h1>
         </div>
 
-        <div class="section-title">
+          <a href="#/login" ng-click="logOut()" style="text-decoration:none;color:#fff;">
+            <button class="button button-assertive" style="float:right;">
+                <i class="icon ion-log-out"></i> Log out
+            </button>
+          </a>
+
+        <div class="section-title" style="clear:both;">
             <h2>Settings</h2>
         </div>
         <div class="container-fluid no-padding">
             <div class="clearfix">
                 <div class="col-centered col-xs-4">
-                    <button class="button button-block button-calm add-camera" ng-click="addCamera()">Add camera</button>
+                    <button class="button button-block button-positive" ng-click="goProfile()">Profil</button>
                 </div>
                 <div class="col-centered col-xs-4">
-                    <a class="btn" href="/#/profil">Profil</a>
+                    <button class="button button-block button-calm add-camera" ng-click="addCamera()">Add camera</button>
                 </div>
             </div>
         </div>
