@@ -1,27 +1,35 @@
 <ion-view view-title="Signup" name="signup-view">
   <ion-content class="padding">
-    <div class="list list-inset">
-      <label>Username</label>
-      <label class="item item-input">
-        <input type="text" placeholder="Username" ng-model="data.username">
-      </label>
+    <form name="signupForm" novalidate>
+      <div class="list list-inset" ng-class="(signupForm.username.$valid) ? 'valid' : 'error'">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" placeholder="Username" name="username" class="form-control" ng-model="data.username" required>
+        </label>
+      </div>
+      <div class="list list-inset" ng-class="(signupForm.email.$valid) ? 'valid' : 'error'">
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" placeholder="Email" name="email" class="form-control" ng-model="data.email" required>
+        </label>
+      </div>
+      <div class="list list-inset" ng-class="(signupForm.password.$valid && signupForm.confPassword.$valid) ? 'valid' : 'error'">
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" id="password" placeholder="Password" name="password" class="form-control" ng-model="data.password" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Confirm Password</span>
+          <input type="password" id="confpassword" placeholder="Confirm Password" name="confPassword" class="form-control" ng-model="data.confpassword" pw-check="password" required>
+        </label>
+        <span class='error' ng-show='signupForm.confPassword.$error.pwCheck'>
+          Passwords don't match.
+        </span>
+      </div>
+      <button class="button button-block button-calm" ng-disabled="signupForm.$invalid" ng-click="signup()">Sign Up!</button>
+    </form>
+    <div style="margin-top:40px;">
+      <a href="#/login" ng-click="goLogin()">Return to login page</a>
     </div>
-    <div class="list list-inset">
-      <label>Email</label>
-      <label class="item item-input">
-        <input type="email" placeholder="Email" ng-model="data.email">
-      </label>
-    </div>
-    <div class="list list-inset">
-      <label>Password</label>
-      <label class="item item-input">
-        <input type="password" placeholder="Password" ng-model="data.password">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Confirm Password" ng-model="data.confpassword">
-      </label>
-    </div>
-    <button class="button button-block button-calm" ng-click="signup()">Sign Up!</button>
-    <a href="#/login" ng-click="goLogin()">Return to login page</a>
   </ion-content>
 </ion-view>

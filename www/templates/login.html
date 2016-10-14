@@ -1,18 +1,22 @@
 <ion-view view-title="Login" name="login-view">
   <ion-content class="padding">
-    <div class="list list-inset">
-      <label>Username</label>
-      <label class="item item-input">
-        <input type="text" placeholder="Username" ng-model="data.username">
-      </label>
+    <form name="loginForm" novalidate>
+      <div class="list list-inset" ng-class="(loginForm.username.$valid) ? 'valid' : 'error'">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" id="usernameLoginField" placeholder="Username" name="username" class="form-control" ng-model="data.username" required>
+        </label>
+      </div>
+      <div class="list list-inset" ng-class="(loginForm.password.$valid) ? 'valid' : 'error'">
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" id="passwordLoginField" placeholder="Password" name="password" class="form-control" ng-model="data.password" required>
+        </label>
+      </div>
+      <button class="button button-block button-calm" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
+    </form>
+    <div style="margin-top:40px;">
+      <a href="#/signup">No account yet? Sign Up...</a>
     </div>
-    <div class="list list-inset">
-      <label>Password</label>
-      <label class="item item-input">
-        <input type="password" placeholder="Password" ng-model="data.password">
-      </label>
-    </div>
-    <button class="button button-block button-calm" ng-click="login()">Login</button>
-    <a href="#/signup">No account yet? Sign Up...</a>
   </ion-content>
 </ion-view>
