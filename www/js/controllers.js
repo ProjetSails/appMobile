@@ -56,6 +56,9 @@ module.controller('SignupCtrl', function($scope, SignupService, $ionicPopup, $st
 module.controller('ListCamsCtrl', function($scope, ListCamsService, $ionicPopup, $window, $http) {
   $scope.data = {};
 
+    verifLog($scope, $http, $window);
+
+
   $scope.cams = [
     { title: 'Camera 1' },
     { title: 'Camera 2' },
@@ -95,7 +98,7 @@ module.controller('ListCamsCtrl', function($scope, ListCamsService, $ionicPopup,
 
 module.controller('ProfilCtrl', function($scope, ProfileService, $ionicPopup, $http, $window, $ionicModal) {
   $scope.data = {};
-
+    verifLog($scope, $http, $window);
   $scope.logOut = function() {
     window.localStorage.setItem('authToken', "");
     $http.post(urlBaseApi + '/auth/signout',{});
@@ -149,3 +152,20 @@ module.controller('ProfilCtrl', function($scope, ProfileService, $ionicPopup, $h
     $scope.modal.hide();
   };
 });
+
+var verifLog = function($scope, $http, $window){
+    if(window.localStorage.getItem('authToken') != null && window.localStorage.getItem('authToken') != "") {
+        var token = window.localStorage.getItem('authToken');
+        var tokenField = 'JWT ' + token;
+        $http.get(urlBaseApi + '/user/me', {
+            headers: {
+                'Authorization': tokenField
+            }
+        }).error(function(data, status, headers, config) {
+            $window.location.href = '#/login';
+        })
+    } else {
+        $window.location.href = '#/login';
+    }
+
+};
