@@ -1,15 +1,16 @@
-<ion-view view-title="ListCams" name="listcams-view">
+<ion-view view-title="Cam&eacute;ras" name="listcams-view">
     <ion-content class="padding">
 
-        <div class="page-title text-center">
-            <h1>Cameras</h1>
-        </div>
-
           <a href="#/login" ng-click="logOut()" style="text-decoration:none;color:#fff;">
-            <button class="button button-assertive" style="float:right;">
-                <i class="icon ion-log-out"></i> Log out
+            <button class="button button-assertive icon icon-left ion-log-out" style="float:right;">
+                Log out
             </button>
           </a>
+
+
+          <div class="col-centered col-xs-4">
+              <button class="button button-positive icon icon-right ion-person" ng-click="goProfile()">Profile</button>
+          </div>
 
         <div class="section-title" style="clear:both;">
             <h2>Settings</h2>
@@ -17,14 +18,7 @@
         <div class="container-fluid no-padding">
             <div class="clearfix">
                 <div class="col-centered col-xs-4">
-                    <button class="button button-block button-positive" ng-click="goProfile()">Profil</button>
-                </div>
-                <div class="col-centered col-xs-4">
-<<<<<<< HEAD
                     <button class="button button-block button-calm add-camera" ng-click="addCamera()">Add camera</button>
-=======
-                    <a class="btn" href="#/profil">Profil</a>
->>>>>>> a7c471cc75fe63b6c828c27f44411593aab45fc1
                 </div>
             </div>
         </div>
@@ -39,7 +33,5 @@
 
             </ion-item>
         </ion-list>
-
-
     </ion-content>
 </ion-view>

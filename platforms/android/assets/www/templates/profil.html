@@ -1,10 +1,39 @@
 <ion-view view-title="Profil" name="profil-view">
-    <ion-content class="padding">
-
-        <div class="page-title text-center">
-            <h1>Profil</h1>
-        </div>
-
-
-    </ion-content>
+  <ion-content class="padding">
+    <a href="#/login" ng-click="logOut()" style="text-decoration:none;color:#fff;float:right;">
+      <button class="button button-assertive">
+          <i class="icon ion-log-out"></i> Log out
+      </button>
+    </a>
+      <a href="#/listcams" style="text-decoration:none;color:#fff;float:left;">
+        <button class="button button-positive">
+            Cam&eacute;ras <i class="icon ion-arrow-left-c"></i>
+        </button>
+      </a>
+    <div class="list list-inset" style="clear:both;">
+      <label>Username</label>
+      <label class="item item-input">
+        <input type="text" id="usernameField" placeholder="Username" ng-model="data.username">
+      </label>
+    </div>
+    <div class="list list-inset">
+      <label>Email</label>
+      <label class="item item-input">
+        <input type="email" id="emailField" placeholder="Email" ng-model="data.email">
+      </label>
+    </div>
+    <div class="list list-inset">
+      <label>Password</label>
+      <label class="item item-input">
+        <input type="password" id="passwordField" placeholder="Password" ng-model="data.password">
+      </label>
+      <label class="item item-input">
+        <input type="password" id="passwordConfField" placeholder="Confirm Password" ng-model="data.confpassword">
+      </label>
+    </div>
+    <button class="button button-block button-calm" ng-click="updateProfile()">Update Profile</button>
+    <div style="text-align: center;">
+      <button class="button button-assertive" ng-click="openDeleteModal()">Delete User</button>
+    </div>
+  </ion-content>
 </ion-view>
