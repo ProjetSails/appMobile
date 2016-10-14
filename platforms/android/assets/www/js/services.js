@@ -53,7 +53,6 @@ angular.module('starter.services', [])
     }
 })
 
-
 .service('SignupService', function($q, $http) {
     return {
         signupUser: function(name, email, pw, confpw) {
@@ -71,7 +70,7 @@ angular.module('starter.services', [])
                     }).success(function(response) {
                         deferred.resolve(response);
                     }).error(function(data, status, headers, config) {
-                        deferred.reject('The api\'s builder suck!!');
+                        deferred.reject(data);
                     })
 
                 promise.success = function(fn) {
@@ -88,6 +87,30 @@ angular.module('starter.services', [])
                     promise.then(null, fn);
                     return promise;
                 }
+            }
+
+            return promise;
+        }
+    }
+})
+
+.service('ListCamsService', function($q, $http) {
+    return {
+
+
+        addCamera: function() {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+
+            promise.success = function(fn) {
+                promise.then(fn);
+                deferred.resolve(fn);
+                return promise;
+            }
+            promise.error = function(fn) {
+                promise.then(null, fn);
+                deferred.reject('The api\'s builder suck!!');
+                return promise;
             }
 
             return promise;

@@ -1,21 +1,27 @@
 <ion-view view-title="Signup" name="signup-view">
-    <ion-content class="padding">
-        <div class="list list-inset">
-            {{data.val}}
-            <label class="item item-input">
-                <input type="text" placeholder="Username" ng-model="data.username">
-            </label>
-            <label class="item item-input">
-                <input type="email" placeholder="Email" ng-model="data.email">
-            </label>
-            <label class="item item-input">
-                <input type="password" placeholder="Password" ng-model="data.password">
-            </label>
-            <label class="item item-input">
-                <input type="password" placeholder="Confirm Password" ng-model="data.confpassword">
-            </label>
-        </div>
-        <button class="button button-block button-calm" ng-click="signup()">Sign Up!</button>
-        <a href="#/login" ng-click="goLogin()">Return to login page</a>
-    </ion-content>
+  <ion-content class="padding">
+    <div class="list list-inset">
+      <label>Username</label>
+      <label class="item item-input">
+        <input type="text" placeholder="Username" ng-model="data.username">
+      </label>
+    </div>
+    <div class="list list-inset">
+      <label>Email</label>
+      <label class="item item-input">
+        <input type="email" placeholder="Email" ng-model="data.email">
+      </label>
+    </div>
+    <div class="list list-inset">
+      <label>Password</label>
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="data.password">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Confirm Password" ng-model="data.confpassword">
+      </label>
+    </div>
+    <button class="button button-block button-calm" ng-click="signup()">Sign Up!</button>
+    <a href="#/login" ng-click="goLogin()">Return to login page</a>
+  </ion-content>
 </ion-view>

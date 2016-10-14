@@ -49,3 +49,26 @@
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
+
+<script id="delete-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Delete User</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list list-inset" style="text-align:center;">
+        <span>Are you sure you want to delete your account?</span>
+      </div>
+      <div class="list list-inset" style="text-align:center;">
+        <button
+          class="button button-assertive icon icon-left ion-trash-a"
+          ng-click = "deleteUser()"
+          style="margin-right:10px;">Delete</button>
+        <button
+          class="button button-calm icon icon-left ion-close-circled"
+          ng-click = "closeModal()"
+          style="margin-left:10px;">Cancel</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
