@@ -7,6 +7,14 @@ angular.module('starter.controllers')
       window.localStorage.setItem('authToken', data.data.token);
       //signup a fonctionné
       $window.location.href = '#/listcams';
+      $http.get(urlBaseApi + '/user/me', {
+        headers: {
+          'Authorization': 'JWT ' + window.localStorage.getItem('authToken')
+        }
+      }).success(function(response) {
+        $("#usernameField").val(response.username);
+        $("#emailField").val(response.email);
+      });
     }).error(function(data) {
       var alertPopup = $ionicPopup.alert({
         title: 'Sign up failed.',

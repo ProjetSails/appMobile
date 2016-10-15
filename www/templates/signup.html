@@ -1,26 +1,34 @@
 <ion-view view-title="Signup" name="signup-view">
   <ion-content class="padding">
     <form name="signupForm" novalidate>
-      <div class="list list-inset" ng-class="(signupForm.username.$valid) ? 'valid' : 'error'">
+      <div class="list list-inset">
         <label class="item item-input">
           <span class="input-label">Username</span>
           <input type="text" placeholder="Username" name="username" class="form-control" ng-model="data.username" required>
+          <i class="icon ion-checkmark-round" ng-show="signupForm.username.$valid" style="position:absolute;right:10px;bottom:10px;color:green;"></i>
+          <i class="icon ion-close-round" ng-show="signupForm.username.$invalid" style="position:absolute;right:10px;bottom:10px;color:red;"></i>
         </label>
       </div>
-      <div class="list list-inset" ng-class="(signupForm.email.$valid) ? 'valid' : 'error'">
+      <div class="list list-inset">
         <label class="item item-input">
           <span class="input-label">Email</span>
           <input type="email" placeholder="Email" name="email" class="form-control" ng-model="data.email" required>
+          <i class="icon ion-checkmark-round" ng-show="signupForm.email.$valid" style="position:absolute;right:10px;bottom:10px;color:green;"></i>
+          <i class="icon ion-close-round" ng-show="signupForm.email.$invalid" style="position:absolute;right:10px;bottom:10px;color:red;"></i>
         </label>
       </div>
-      <div class="list list-inset" ng-class="(signupForm.password.$valid && signupForm.confPassword.$valid) ? 'valid' : 'error'">
+      <div class="list list-inset">
         <label class="item item-input">
           <span class="input-label">Password</span>
           <input type="password" id="password" placeholder="Password" name="password" class="form-control" ng-model="data.password" required>
+          <i class="icon ion-checkmark-round" ng-show="signupForm.password.$valid" style="position:absolute;right:10px;bottom:10px;color:green;"></i>
+          <i class="icon ion-close-round" ng-show="signupForm.password.$invalid" style="position:absolute;right:10px;bottom:10px;color:red;"></i>
         </label>
         <label class="item item-input">
           <span class="input-label">Confirm Password</span>
           <input type="password" id="confpassword" placeholder="Confirm Password" name="confPassword" class="form-control" ng-model="data.confpassword" pw-check="password" required>
+          <i class="icon ion-checkmark-round" ng-show="signupForm.confPassword.$valid" style="position:absolute;right:10px;bottom:10px;color:green;"></i>
+          <i class="icon ion-close-round" ng-show="signupForm.confPassword.$invalid" style="position:absolute;right:10px;bottom:10px;color:red;"></i>
         </label>
         <span class='error' ng-show='signupForm.confPassword.$error.pwCheck'>
           Passwords don't match.
