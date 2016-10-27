@@ -1,0 +1,20 @@
+<ion-view view-title="Create Group" name="signup-view">
+  <ion-content class="padding">
+    <a href="#/listcams" style="text-decoration:none;color:#fff;float:left;margin-bottom:20px;">
+      <button class="button button-positive">
+          Cam&eacute;ras <i class="icon ion-arrow-left-c"></i>
+      </button>
+    </a>
+    <form name="createGroupForm" novalidate style="clear:both;">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <span class="input-label">Group Name</span>
+          <input type="text" placeholder="Group Name" name="groupName" class="form-control" ng-model="data.groupName" required>
+          <i class="icon ion-checkmark-round" ng-show="createGroupForm.groupName.$valid" style="position:absolute;right:10px;bottom:10px;color:green;"></i>
+          <i class="icon ion-close-round" ng-show="createGroupForm.groupName.$invalid" style="position:absolute;right:10px;bottom:10px;color:red;"></i>
+        </label>
+      </div>
+      <button class="button button-block button-calm" ng-disabled="createGroupForm.$invalid" ng-click="createGroup()">Create Group!</button>
+    </form>
+  </ion-content>
+</ion-view>

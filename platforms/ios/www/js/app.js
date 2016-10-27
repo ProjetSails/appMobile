@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,11 +31,35 @@ app.config(function($stateProvider, $urlRouterProvider) {
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  .state('login', {
+    .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
-  });
+    })
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'templates/signup.html',
+      controller: 'SignupCtrl'
+    })
+    .state('listcams', {
+      url: '/listcams',
+      templateUrl: 'templates/listcams.html',
+      controller: 'ListCamsCtrl'
+    })
+    .state('profil', {
+      url: '/profil',
+      templateUrl: 'templates/profil.html',
+      controller: 'ProfilCtrl'
+    }).state('createGroup', {
+      url: '/createGroup',
+      templateUrl: 'templates/createGroup.html',
+      controller: 'createGroupCtrl'
+    }).state('addDevice', {
+      url: '/addDevice',
+      templateUrl: 'templates/addDevice.html',
+      controller: 'addDeviceCtrl'
+    });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

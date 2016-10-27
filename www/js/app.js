@@ -31,26 +31,57 @@ app.config(function($stateProvider, $urlRouterProvider) {
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-      .state('login', {
-          url: '/login',
-          templateUrl: 'templates/login.html',
-          controller: 'LoginCtrl'
-      })
-      .state('signup', {
-          url: '/signup',
-          templateUrl: 'templates/signup.html',
-          controller: 'SignupCtrl'
-      })
-      .state('listcams', {
-          url: '/listcams',
-          templateUrl: 'templates/listcams.html',
-          controller: 'ListCamsCtrl'
-      })
-      .state('profil', {
-          url: '/profil',
-          templateUrl: 'templates/profil.html',
-          controller: 'ProfilCtrl'
-      });
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      resolve: {
+        testToken: function(LoginService, $window, $state) {
+          if(window.localStorage.getItem('authToken') != null && window.localStorage.getItem('authToken') != "") {
+            LoginService.loginToken(window.localStorage.getItem('authToken')).success(function(data) {
+              //Le token existe déjà et fonctionne
+              $state.go('listcams');
+            }).error(function(data) {
+              //Le token n'est pas bon
+              window.localStorage.setItem('authToken', "");
+            })
+          } else {
+            //Le token n'a pas été trouvé
+          }
+        }
+      },
+      controller: 'LoginCtrl'
+    })
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'templates/signup.html',
+      controller: 'SignupCtrl'
+    })
+    .state('listcams', {
+      url: '/listcams',
+      templateUrl: 'templates/listcams.html',
+      controller: 'ListCamsCtrl'
+    })
+    .state('profil', {
+      url: '/profil',
+      templateUrl: 'templates/profil.html',
+      controller: 'ProfilCtrl'
+    }).state('createGroup', {
+      url: '/createGroup',
+      templateUrl: 'templates/createGroup.html',
+      controller: 'createGroupCtrl'
+    }).state('addDevice', {
+      url: '/addDevice',
+      templateUrl: 'templates/addDevice.html',
+      controller: 'addDeviceCtrl'
+    }).state('manageGroup', {
+      url: '/manageGroup',
+      templateUrl: 'templates/manageGroup.html',
+      controller: 'manageGroupCtrl'
+    }).state('handleCam', {
+      url: '/handleCam',
+      templateUrl: 'templates/handleCam.html',
+      controller: 'HandleCamCtrl'
+    });
 
 
   // if none of the above states are matched, use this as the fallback

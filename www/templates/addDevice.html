@@ -1,0 +1,30 @@
+<ion-view cache-view="false" view-title="Add Device" name="signup-view">
+  <ion-content class="padding">
+    <a href="#/listcams" style="text-decoration:none;color:#fff;float:left;margin-bottom:20px;">
+      <button class="button button-positive">
+          Cam&eacute;ras <i class="icon ion-arrow-left-c"></i>
+      </button>
+    </a>
+    <form name="addDeviceForm" novalidate style="clear:both;">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <span class="input-label">Device Name</span>
+          <input type="text" placeholder="Device Name" name="deviceName" class="form-control" ng-model="data.deviceName" required>
+          <i class="icon ion-checkmark-round" ng-show="addDeviceForm.deviceName.$valid" style="position:absolute;right:10px;bottom:10px;color:green;"></i>
+          <i class="icon ion-close-round" ng-show="addDeviceForm.deviceName.$invalid" style="position:absolute;right:10px;bottom:10px;color:red;"></i>
+        </label>
+      </div>
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Group
+          </div>
+          <select ng-repeat="group in groups" ng-model="data.group">
+            <option ng-value="group.id">{{group.name}}</option>
+          </select>
+        </label>
+      </div>
+      <button class="button button-block button-calm" ng-disabled="addDeviceForm.$invalid" ng-click="addDevice()">Add Device!</button>
+    </form>
+  </ion-content>
+</ion-view>

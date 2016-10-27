@@ -19,6 +19,8 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <script src="js/jquery-3.1.1.min.js"></script>
+
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
@@ -32,16 +34,27 @@
     <!-- your app's js -->
     <script src="js/constants.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
+    <script src="js/controllers/controllers.js"></script>
+    <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/signupController.js"></script>
+    <script src="js/controllers/listCamsController.js"></script>
+    <script src="js/controllers/profileController.js"></script>
+    <script src="js/controllers/createGroupController.js"></script>
+    <script src="js/controllers/addDeviceController.js"></script>
+    <script src="js/services/services.js"></script>
+    <script src="js/services/loginService.js"></script>
+    <script src="js/services/signupService.js"></script>
+    <script src="js/services/listCamsService.js"></script>
+    <script src="js/services/profileService.js"></script>
+    <script src="js/services/createGroupService.js"></script>
+    <script src="js/services/addDeviceService.js"></script>
+    <script src="js/directives.js"></script>
   </head>
   <body ng-app="starter" class="platform-ios platform-cordova platform-webview">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
     <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
     </ion-nav-bar>
     <!--
       The views will be rendered in the <ion-nav-view> directive below
@@ -51,3 +64,26 @@
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
+
+<script id="delete-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Delete User</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list list-inset" style="text-align:center;">
+        <span>Are you sure you want to delete your account?</span>
+      </div>
+      <div class="list list-inset" style="text-align:center;">
+        <button
+          class="button button-assertive icon icon-left ion-trash-a"
+          ng-click = "deleteUser()"
+          style="margin-right:10px;">Delete</button>
+        <button
+          class="button button-calm icon icon-left ion-close-circled"
+          ng-click = "closeModal()"
+          style="margin-left:10px;">Cancel</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

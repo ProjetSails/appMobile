@@ -1,37 +1,42 @@
-<ion-view view-title="Cam&eacute;ras" name="listcams-view">
-    <ion-content class="padding">
+<ion-view view-title="Settings" name="listcams-view">
+  <ion-content class="padding">
 
-          <a href="#/login" ng-click="logOut()" style="text-decoration:none;color:#fff;">
-            <button class="button button-assertive icon icon-left ion-log-out" style="float:right;">
+    <a href="#/login" ng-click="logOut()" style="text-decoration:none;color:#fff;">
+      <button class="button button-assertive icon icon-left ion-log-out" style="float:right;">
                 Log out
             </button>
-          </a>
+    </a>
 
 
-          <div class="col-centered col-xs-4" style="margin-bottom:20px;">
-              <button class="button button-positive icon icon-right ion-person" ng-click="goProfile()">Profile</button>
-          </div>
+    <div class="col-centered col-xs-4" style="margin-bottom:20px;">
+      <button class="button button-positive icon icon-right ion-person" ng-click="goProfile()">Profile</button>
+    </div>
 
-        <div class="section-title" style="clear:both;">
-            <h2>Settings</h2>
-        </div>
-        <div class="container-fluid no-padding">
-            <div class="clearfix">
-                <div class="col-centered col-xs-4">
-                    <button class="button button-block button-calm add-camera" ng-click="addCamera()">Add camera</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-title ">
-            <h2>Cameras</h2>
-        </div>
+    <div class="card">
+      <div class="item item-divider section-title">
+        <h1 style="display:inline;">Devices</h1>
+        <button style="float:right;margin-top:10px;margin-bottom:10px;" class="button button-balanced icon-left ion-android-add" ng-click="addCamera()">Add device</button>
+      </div>
+      <div class="item item-text-wrap">
         <ion-list>
-            <ion-item ng-repeat="cam in cams">
-
-                <button class="button button-block button-calm select-camera" ng-click="selectCamera(cam.id)">{{cam.title}}</button>
-
-            </ion-item>
+          <ion-item ng-repeat="cam in cams">
+            <button class="button button-block select-camera" ng-class="{false: 'button-calm', true: 'button-positive'}[cam.etat]" ng-click="selectCamera(cam)">{{cam.title}}</button>
+          </ion-item>
         </ion-list>
-    </ion-content>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-divider section-title">
+        <h1 style="display:inline;">Groups</h1>
+        <button style="float:right;margin-top:10px;margin-bottom:10px;" class="button button-balanced icon-left ion-android-add" ng-click="addGroup()">Add group</button>
+      </div>
+      <div class="item item-text-wrap">
+        <ion-list>
+          <ion-item ng-repeat="group in groups">
+            <button class="button button-block button-calm select-camera" ng-click="selectGroup(group)">{{group.name}}</button>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>
