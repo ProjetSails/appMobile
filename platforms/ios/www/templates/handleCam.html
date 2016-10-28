@@ -1,0 +1,22 @@
+<ion-view cache-view="false" view-title="Handle Device: {{cameraSelected.title}}" name="signup-view">
+  <ion-content class="padding">
+    <div style="float:right;width:40%;">
+      <ion-toggle ng-model="cameraSelected.etat" id="toggleState" toggle-class="toggle-positive" ng-click="changeState(cameraSelected);">Is Active</ion-toggle>
+    </div>
+    <a href="#/listcams" style="text-decoration:none;color:#fff;float:left;margin-bottom:20px;">
+      <button class="button button-positive">
+          Cam&eacute;ras <i class="icon ion-arrow-left-c"></i>
+      </button>
+    </a>
+    <div style="clear:both;text-align:center;" id="displayZone" ng-hide="cameraSelected.etat == false">
+      <div style="width:90%;margin-left:5%;margin-top:20px;margin-bottom:20px;height:320px;">
+        <embed-video data-ng-href="https://www.youtube.com/watch?v=9ta1iMto1TU" width="100%" height="100%" controls=0></embed-video>
+      </div>
+      <div class="item range">
+        <i class="icon ion-arrow-left-c"></i>
+        <input type="range" id="rangeValue" name="percentage" ng-model="percentage" on-release="valueChange(cameraSelected)">
+        <i class="icon ion-arrow-right-c"></i>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

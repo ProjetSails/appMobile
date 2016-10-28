@@ -7,6 +7,7 @@
   "dependencies": {
     "socket.io-client": "sio-client#^1.4.8",
     "sails.io.js": "^0.14.0",
-    "ng-videosharing-embed": "^0.3.4"
+    "ng-videosharing-embed": "^0.3.4",
+    "ngCordova": "^0.1.27-alpha"
   }
 }

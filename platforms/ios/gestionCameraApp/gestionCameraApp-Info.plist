@@ -39,5 +39,7 @@
     <string/>
     <key>UIRequiresFullScreen</key>
     <true/>
+    <key>NSCameraUsageDescription</key>
+    <string/>
   </dict>
 </plist>

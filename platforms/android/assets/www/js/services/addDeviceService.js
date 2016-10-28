@@ -2,14 +2,14 @@ angular.module('starter.services')
 .service('addDeviceService', function($q, $http) {
   return {
 
-    addDevice: function(deviceName, groupId) {
+    addDevice: function(deviceName, groupId, qrCode) {
       var deferred = $q.defer();
       var promise = deferred.promise;
 
       var token = window.localStorage.getItem('authToken');
       var tokenField = 'JWT ' + token;
 
-      var codeCarte = new Date();
+      var codeCarte = qrCode;
 
       $http.post(urlBaseApi + '/Device',
       {

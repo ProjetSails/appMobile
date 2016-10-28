@@ -20,7 +20,7 @@
       <div class="item item-text-wrap">
         <ion-list>
           <ion-item ng-repeat="cam in cams">
-            <button class="button button-block button-calm select-camera" ng-click="selectCamera(cam)" ng-disabled="cam.etat == false">{{cam.title}}</button>
+            <button class="button button-block select-camera" ng-class="{false: 'button-calm', true: 'button-positive'}[cam.etat]" ng-click="selectCamera(cam)">{{cam.title}}</button>
           </ion-item>
         </ion-list>
       </div>

@@ -8,10 +8,7 @@ angular.module('starter.controllers')
 
   $scope.addDevice = function() {
     addDeviceService.addDevice($scope.data.deviceName, $scope.data.group).success(function(data) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Device Added!',
-        template: 'Your device has been succesfully added!'
-      });
+      $window.location.href = '#/listCams';
     }).error(function(data) {
       var alertPopup = $ionicPopup.alert({
         title: 'Error',

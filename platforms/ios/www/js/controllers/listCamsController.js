@@ -23,6 +23,7 @@ angular.module('starter.controllers')
           title: elt.nom,
           codeCarte: elt.code_carte,
           etat: elt.etat,
+          angle: elt.angle,
           id: elt.id
         });
       });
@@ -51,10 +52,12 @@ angular.module('starter.controllers')
       }).success(function(resp){
         $scope.groups = [];
         angular.forEach(resp, function(elt) {
-          $scope.groups.push({
-            name: elt.group.name,
-            id: elt.group.id
-          });
+          if (elt.isAdmin) {
+            $scope.groups.push({
+              name: elt.group.name,
+              id: elt.group.id
+            });
+          }
         });
       }).error(function(data, status, headers, config) {
         var alertPopup = $ionicPopup.alert({
@@ -88,14 +91,17 @@ angular.module('starter.controllers')
   };
 
   $scope.selectCamera = function(device) {
-    console.log(device.id + ' - ' + device.etat);
+    cameraSelected = device;
+    $window.location.href = '#/handleCam';
   };
 
   $scope.selectGroup = function(group) {
-    console.log(group.id + ' - ' + group.name);
+    groupSelected = group;
+    $window.location.href = '#/manageGroup';
   };
 
-  $scope.getCams();
-
-  $scope.getGroups();
+  $scope.$on('$ionicView.enter', function(){
+    $scope.getCams();
+    $scope.getGroups();
+  });
 });
