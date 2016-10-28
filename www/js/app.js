@@ -5,7 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives']);
+var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.directives', 'videosharing-embed']);
+
+io.sails.autoConnect = false;
+io.sails.useCORSRouteToGetCookie = false;
+io.sails.url = urlBaseApi;
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

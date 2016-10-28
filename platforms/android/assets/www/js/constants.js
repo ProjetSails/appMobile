@@ -1,4 +1,9 @@
-var urlBaseApi = 'https://gestioncameraapi.herokuapp.com';
+var urlBaseApi = 'https://gestioncameraapi.herokuapp.com:443';
+//urlBaseApi = 'http://localhost:1337';
+
+var groupSelected = {};
+
+var cameraSelected = {};
 
 var verifLog = function($scope, $http, $window){
   if(window.localStorage.getItem('authToken') != null && window.localStorage.getItem('authToken') != "") {

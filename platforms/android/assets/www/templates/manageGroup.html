@@ -1,0 +1,37 @@
+<ion-view view-title="Group Management" name="profil-view">
+  <ion-content class="padding">
+    <a href="#/login" ng-click="logOut()" style="text-decoration:none;color:#fff;float:right;">
+      <button class="button button-assertive">
+          <i class="icon ion-log-out"></i> Log out
+      </button>
+    </a>
+    <a href="#/listcams" style="text-decoration:none;color:#fff;float:left;margin-bottom:20px;">
+      <button class="button button-positive">
+            Cam&eacute;ras <i class="icon ion-arrow-left-c"></i>
+        </button>
+    </a>
+    <div class="card" style="clear:both;">
+      <div class="item item-divider section-title">
+        <h1 style="display:inline;">Groupe :</h1>
+        <button style="float:right;margin-top:10px;margin-bottom:10px;" class="button button-balanced icon-left ion-android-add" ng-click="openAddUserModal()">Add user</button>
+        <h1 style="clear:both;">{{group.name}}</h1>
+      </div>
+      <div class="item item-text-wrap">
+        <ion-list>
+          <ion-item ng-repeat="user in users">
+            <h2 style="display:inline">{{user.username}}</h2>
+            <div style="float:right;" ng-click="changeAdmin(user.idUsr, user.isAdmin, user.idEnt)">
+              <ion-checkbox ng-model="user.isAdmin">Admin</ion-checkbox>
+            </div>
+            <div style="clear;both;">
+              <h2>{{user.email}}</h2>
+            </div>
+            <div style="text-align: center;margin-top:10px;" id="user{{user.idEnt}}">
+              <button class="button button-assertive icon-left ion-trash-a" ng-click="removeUser(user.idEnt)">Remove from group</button>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

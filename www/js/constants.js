@@ -1,4 +1,5 @@
-var urlBaseApi = 'https://gestioncameraapi.herokuapp.com';
+var urlBaseApi = 'https://gestioncameraapi.herokuapp.com:443';
+//urlBaseApi = 'http://localhost:1337';
 
 var groupSelected = {};
 

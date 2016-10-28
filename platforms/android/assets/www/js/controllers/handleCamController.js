@@ -14,6 +14,9 @@ angular.module('starter.controllers')
       $scope.cameraSelected = cameraSelected;
       $("#rangeValue").val(cameraSelected.angle);
 
+      $http.get("https://api.twitch.tv/kraken/streams")
+        .success(function(response) {$scope.names = response.streams;});
+
       if (cameraSelected.etat == true) {
         //handle opening video stream and rotation
       }

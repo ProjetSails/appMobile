@@ -23,6 +23,7 @@ angular.module('starter.controllers')
           title: elt.nom,
           codeCarte: elt.code_carte,
           etat: elt.etat,
+          angle: elt.angle,
           id: elt.id
         });
       });

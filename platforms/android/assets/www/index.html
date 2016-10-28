@@ -31,6 +31,11 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+    <script src="http://gestioncameraapi.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="lib/sails.io.js/sails.io.js"></script>
+
+    <script src="lib/ng-videosharing-embed/build/ng-videosharing-embed.min.js"></script>
+
     <!-- your app's js -->
     <script src="js/constants.js"></script>
     <script src="js/app.js"></script>
@@ -41,6 +46,8 @@
     <script src="js/controllers/profileController.js"></script>
     <script src="js/controllers/createGroupController.js"></script>
     <script src="js/controllers/addDeviceController.js"></script>
+    <script src="js/controllers/manageGroupController.js"></script>
+    <script src="js/controllers/handleCamController.js"></script>
     <script src="js/services/services.js"></script>
     <script src="js/services/loginService.js"></script>
     <script src="js/services/signupService.js"></script>
@@ -48,6 +55,8 @@
     <script src="js/services/profileService.js"></script>
     <script src="js/services/createGroupService.js"></script>
     <script src="js/services/addDeviceService.js"></script>
+    <script src="js/services/manageGroupService.js"></script>
+    <script src="js/services/handleCamService.js"></script>
     <script src="js/directives.js"></script>
   </head>
   <body ng-app="starter" class="platform-android platform-cordova platform-webview">
@@ -84,6 +93,23 @@
           ng-click = "closeModal()"
           style="margin-left:10px;">Cancel</button>
       </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="users-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Select User</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item ng-repeat="user in allUsers">
+          <h2 style="display:inline;">{{user.username}}</h2>
+          <button style="float:right;" class="button button-balanced icon-left ion-android-add" ng-click="addToGroup(user, group)">Add to group</button>
+          <h2 style="clear:both;">{{user.email}}</h2>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-modal-view>
 </script>

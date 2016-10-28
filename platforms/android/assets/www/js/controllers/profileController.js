@@ -4,13 +4,15 @@ angular.module('starter.controllers')
 
   verifLog($scope, $http, $window);
 
-  $http.get(urlBaseApi + '/user/me', {
-    headers: {
-      'Authorization': 'JWT ' + window.localStorage.getItem('authToken')
-    }
-  }).success(function(response) {
-    $("#usernameField").val(response.username);
-    $("#emailField").val(response.email);
+  $scope.$on('$ionicView.enter', function(){
+    $http.get(urlBaseApi + '/user/me', {
+      headers: {
+        'Authorization': 'JWT ' + window.localStorage.getItem('authToken')
+      }
+    }).success(function(response) {
+      $("#usernameField").val(response.username);
+      $("#emailField").val(response.email);
+    });
   });
 
   $scope.logOut = function() {
