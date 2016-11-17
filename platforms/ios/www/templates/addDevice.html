@@ -24,8 +24,10 @@
           </select>
         </label>
       </div>
-      <button class="button button-calm" ng-click="">Scan QR Code</button>
-      <button class="button button-block button-calm" ng-disabled="addDeviceForm.$invalid" ng-click="addDevice()">Add Device!</button>
+      <div style="text-align:center;">
+        <button class="button button-calm" ng-click="scanBarcode()">Scan QR Code</button>
+        <button class="button button-block button-calm" ng-disabled="addDeviceForm.$invalid" ng-click="addDevice()">Add Device!</button>
+      </div>
     </form>
   </ion-content>
 </ion-view>

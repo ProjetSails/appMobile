@@ -7,6 +7,9 @@ angular.module('starter.controllers')
     $scope.percentage = 20;
 
     $scope.socket = {};
+    $scope.client = {};
+    $scope.canvas = {};
+    $scope.player = {};
 
     verifLog($scope, $http, $window);
 
@@ -42,10 +45,14 @@ angular.module('starter.controllers')
           }
         });
       });
+      $scope.client = new WebSocket( 'ws://192.168.43.239:8084/' );
+  		$scope.canvas = document.getElementById('videoCanvas');
+  		$scope.player = new jsmpeg($scope.client, {canvas:$scope.canvas});
     });
 
     $scope.$on('$ionicView.leave', function() {
       $scope.socket.disconnect();
+      //$scope.client.disconnect();
     });
 
     $scope.changeState = function(device) {

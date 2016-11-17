@@ -35,6 +35,9 @@
     <script src="lib/sails.io.js/sails.io.js"></script>
 
     <script src="lib/ng-videosharing-embed/build/ng-videosharing-embed.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+    <script src="js/jsmpg.js"></script>
 
     <!-- your app's js -->
     <script src="js/constants.js"></script>
@@ -59,7 +62,7 @@
     <script src="js/services/handleCamService.js"></script>
     <script src="js/directives.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="starter" class="platform-ios platform-cordova platform-webview">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->

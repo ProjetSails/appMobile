@@ -16,6 +16,7 @@ angular.module('starter.services')
         nom: deviceName,
         group: groupId,
         code_carte: codeCarte,
+        angle: 85,
         etat: true
       },
       {

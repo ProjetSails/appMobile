@@ -9,9 +9,8 @@
       </button>
     </a>
     <div style="clear:both;text-align:center;" id="displayZone" ng-hide="cameraSelected.etat == false">
-      <div style="width:90%;margin-left:5%;margin-top:20px;margin-bottom:20px;height:320px;">
-        <embed-video data-ng-href="https://www.youtube.com/watch?v=9ta1iMto1TU" width="100%" height="100%" controls=0></embed-video>
-      </div>
+    	<canvas id="videoCanvas" width="320" height="240">
+    	</canvas>
       <div class="item range">
         <i class="icon ion-arrow-left-c"></i>
         <input type="range" id="rangeValue" name="percentage" ng-model="percentage" on-release="valueChange(cameraSelected)">

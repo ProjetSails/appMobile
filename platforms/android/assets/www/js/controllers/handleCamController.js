@@ -7,6 +7,9 @@ angular.module('starter.controllers')
     $scope.percentage = 20;
 
     $scope.socket = {};
+    $scope.client = {};
+    $scope.canvas = {};
+    $scope.player = {};
 
     verifLog($scope, $http, $window);
 
@@ -28,7 +31,7 @@ angular.module('starter.controllers')
         $scope.socket.on('device', function notificationReceivedFromServer(message) {
           if(cameraSelected.id == message.data.id) {
             if (message.data.angle != undefined) {
-              $scope.percentage = Math.trunc(message.data.angle / 180 * 100);
+              $scope.percentage = Math.trunc(message.data.angle / 170 * 100);
               $("#rangeValue").val($scope.percentage);
             }
             if (message.data.etat != undefined) {
@@ -42,10 +45,14 @@ angular.module('starter.controllers')
           }
         });
       });
+      $scope.client = new WebSocket( 'ws://192.168.43.239:8084/' );
+  		$scope.canvas = document.getElementById('videoCanvas');
+  		$scope.player = new jsmpeg($scope.client, {canvas:$scope.canvas});
     });
 
     $scope.$on('$ionicView.leave', function() {
       $scope.socket.disconnect();
+      //$scope.client.disconnect();
     });
 
     $scope.changeState = function(device) {
@@ -88,7 +95,7 @@ angular.module('starter.controllers')
         }
       }).success(function(response) {
         $http.put(urlBaseApi + '/device/' + device.id, {
-          angle: Math.trunc($scope.percentage * 180 / 100)
+          angle: Math.trunc($scope.percentage * 170 / 100)
         }, {
           headers: {
             'Authorization': tokenField
